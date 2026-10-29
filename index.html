@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Interativa</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Redaction+20:ital,wght@0,400;0,700;1,400&family=Sekuya&family=Skranji:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="https://music.youtube.com/" target="_blank"><img src="img/youtube_logo.svg" alt="Logo do youtube music"></a>
+        <h1>Galeria de Músicas</h1>
+    </header>
+    <span 
+        class="material-symbols-outlined" 
+        id="burguer"
+        onclick="aparecerMenu()">
+            menu
+        </span>
+
+    <!-- FILTROS -->
+    <nav class="filtros">
+        <button class="filtro ativo" data-filtro="todas">TODAS</button>
+        <button class="filtro" data-filtro="Alec'">ALEC'</button>
+        <button class="filtro" data-filtro="Midazs">MIDAZS</button>
+        <button class="filtro" data-filtro="Ayakashi">AYAKASHI</button>
+    </nav>
+
+    <p id="totalImagens" class="total"></p>
+
+    <main class="galeria">
+        <img src="img/foto1.jpg"
+        alt="Música do Ayakashi 'Intensão Assasina'"
+        class="miniatura destaque"
+        data-categoria="Ayakashi"
+        data-autor="Ayakashi"
+        data-tipo="EP"
+        data-album="Filho do ódio"
+        data-ano="2026"
+        tabindex="0">
+        <img src="img/foto2.jpg"
+        alt="Música do Alec' 'Nem Todo Mundo Nasce Herói'"
+        class="miniatura horizontal"
+        data-categoria="Alec'"
+        data-autor="Alec'"
+        data-tipo="Single"
+        data-album=""
+        data-ano="2025"
+        tabindex="0">
+        <img src="img/foto3.jpg"
+        alt="Música do Midazs 'Cidade Alta'"
+        class="miniatura"
+        data-categoria="Midazs"
+        data-autor="Midazs"
+        data-tipo="Single"
+        data-album=""
+        data-ano="2025"
+        tabindex="0">
+        <img src="img/foto4.jpg"
+        alt="Música do Ayakashi 'Manancial'"
+        class="miniatura vertical"
+        data-categoria="Ayakashi"
+        data-autor="Ayakashi"
+        data-tipo="Single"
+        data-album=""
+        data-ano="2023"
+        tabindex="0">        
+        <img src="img/foto5.jpg"
+        alt="Música do Alec' 'Silêncio'"
+        class="miniatura"
+        data-categoria="Alec'"
+        data-autor="Alec'"
+        data-tipo="EP"
+        data-album="Dando Nome Meus Aos Monstros"
+        data-ano="2026"
+        tabindex="0">
+        <img src="img/foto6.jpg"
+        alt="Música do Alec' 'Boemia & Desapego'"
+        class="miniatura horizontal"
+        data-categoria="Alec'"
+        data-autor="Alec'"
+        data-tipo="EP"
+        data-album="Voltarei A Ser Quem Eu Era  "
+        data-ano="2026"
+        tabindex="0">
+        <img src="img/foto7.jpg"
+        alt="Música do Midazs 'Se Deus Existe'"
+        class="miniatura"
+        data-categoria="Midazs"
+        data-autor="Midazs"
+        data-tipo="Single"
+        data-album=""
+        data-ano="2024"
+        tabindex="0">
+        <img src="img/foto8.jpg"
+        alt="Música do Midazs 'Johnny Silverhand'"
+        class="miniatura"
+        data-categoria="Midazs"
+        data-autor="Midazs"
+        data-tipo="Single"
+        data-album=""
+        data-ano="2026"
+        tabindex="0">
+        <img src="img/foto9.jpg"
+        alt="Música do Ayakashi 'Photophobia'"
+        class="miniatura horizontal"
+        data-categoria="Ayakashi"
+        data-autor="Ayakashi"
+        data-tipo="Single"
+        data-album=""
+        data-ano="2026"
+        tabindex="0">
+    </main>
+
+<!-- MODAL -->
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Visualizador de Imagens" aria-hidden="true">
+    <div class="modal-conteudo">
+        <button id="fechar" class="fechar" aria-label="Fechar modal">&times;</button>
+        
+        <div class="container-imagem">
+            <img src="" alt="" id="imagemModal">
+        </div>
+
+        <div class="caixa-informacao">
+            <div class="detalhes-imagem">
+                <div class="cabecalho-info">
+                    <h2 id="nomeImagem" class="nome-imagem"></h2>
+                    <span id="contador" class="contador"></span>
+                </div>
+
+                <div class="descricao">
+                    <div class="info-item">
+                        <span class="rotulo">Artista:</span>
+                        <span id="autorImagem" class="valor"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="rotulo">Formato:</span>
+                        <span id="tipoImagem" class="valor"></span>
+                    </div>
+                    <div class="info-item" id="containerAlbum">
+                        <span class="rotulo">EP/Álbum:</span>
+                        <span id="albumImagem" class="valor"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="rotulo">Ano:</span>
+                        <span id="anoImagem" class="valor"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controles-navegacao">
+                <button id="anterior" class="navegacao anterior" aria-label="Imagem anterior">&#10094; Anterior</button>
+                <button id="proximo" class="navegacao proximo" aria-label="Próxima imagem">Próximo &#10095;</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
